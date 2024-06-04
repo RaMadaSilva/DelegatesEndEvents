@@ -2,10 +2,10 @@
 {
     public class EmailService
     {
-        public void OnProductAdded(object source, ProductEventArgs e)
+        public void SendEmail(object source)
         {
             //Colocar aqui a logica de envio de email. 
-            Console.WriteLine($"EmailService: Enviando email de Notificação do producto: {e.Product.Name}");
+            Console.WriteLine($"EmailService: Enviando email de Notificação do producto");
         }
     }
 }

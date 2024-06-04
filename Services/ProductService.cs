@@ -5,31 +5,16 @@ namespace DelegatesAndEvents.Services;
 public class ProductService
 {
     //Declarando o Delegate
-    public delegate void ProductAddedEventHandler(object source, ProductEventArgs args); 
+    public delegate void ProductAddedEventHandler(object source); 
 
     //Evento baseado no delegate
-    public event ProductAddedEventHandler ProductAdded;
+    public event ProductAddedEventHandler? OnProductAdded;
 
-    protected virtual void OnProductAdded(Product product)
-    {
-        if (ProductAdded != null)
-        {
-            ProductAdded(this, new ProductEventArgs()
-            {
-                Product = product
-            });
-        }
-    }
-
-    public void AddProduct(Product product) 
+    public void AddProduct(Product product)
     { 
-        //Aqui deve ser colocado a logica para adicionar um producto, 
+        //Adicionar a logica para adicionar um produto. 
 
-        OnProductAdded(product);
+        //gerar ou disparar o evento!
+        OnProductAdded?.Invoke(product); 
     }
 }
-
-    public class ProductEventArgs : EventArgs
-    {
-        public Product Product { get; set; } = new(); 
-    }

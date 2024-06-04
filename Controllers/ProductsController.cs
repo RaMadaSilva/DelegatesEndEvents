@@ -17,8 +17,8 @@ namespace DelegatesAndEvents.Controllers
         [Route("/")]
         public async Task<IActionResult> AddProduct([FromBody] Product product)
         {
-            _productService.AddProduct(product);
-            return Ok("Produto Adicionado e Notificação enviada"); 
+            _productService.AddProduct(product); 
+            return Ok("email enviado com sucesso!"); 
         }
 
     }

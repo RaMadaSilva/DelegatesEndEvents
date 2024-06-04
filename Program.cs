@@ -5,8 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddTransient<ProductService>();
-builder.Services.AddTransient<EmailService>(); 
+builder.Services.AddSingleton<ProductService>();
+builder.Services.AddSingleton<EmailService>(); 
 
 
 builder.Services.AddEndpointsApiExplorer();
@@ -25,7 +25,7 @@ var productService = app.Services.GetRequiredService<ProductService>();
 var emailService = app.Services.GetService<EmailService>();
 
 //Subscrever o Evento. 
-productService.ProductAdded += emailService.OnProductAdded; 
+productService.OnProductAdded += emailService.SendEmail; 
 
 app.UseHttpsRedirection();
 
