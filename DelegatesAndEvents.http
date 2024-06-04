@@ -1,0 +1,6 @@
+@DelegatesAndEvents_HostAddress = http://localhost:5077
+
+GET {{DelegatesAndEvents_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
